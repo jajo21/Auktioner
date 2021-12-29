@@ -1,0 +1,15 @@
+﻿@model InventoryListViewModel
+
+@{
+    ViewData["Title"] = "Invetarier";
+}
+@foreach (var article in Model.Articles)
+{
+    <div>
+        <h2>@article.Name</h2>
+        <div>
+            <h4>@article.Description</h4>
+            <h3>@article.StartingPrice.ToString("c")</h3>
+        </div>
+    </div>
+}
