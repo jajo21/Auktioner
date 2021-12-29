@@ -1,5 +1,6 @@
 ﻿using Auktioner.Models;
 using Auktioner.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Auktioner.Controllers
@@ -21,6 +22,7 @@ namespace Auktioner.Controllers
         }
 
         // FÖR ATT LÄGGA TILL INVETARIER
+        [Authorize] // Måste logga in för att lägga till
         public IActionResult Add()
         {
             return View();

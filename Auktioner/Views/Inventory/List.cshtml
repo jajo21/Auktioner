@@ -5,12 +5,12 @@
 }
 @foreach (var article in Model.Articles)
 {
-    <div>
-        <p>@article.ArticleAdded</p>
+    <div>    
         <h2>@article.Name</h2>
-        <div>
-            <h4>@article.Description</h4>
-            <h3>@article.StartingPrice.ToString("c")</h3>
-        </div>
+        <p>Datum: @article.ArticleAdded</p>
+        <p>ID: @article.ArticleId</p>
+        <p>Beskrivning: @article.Description</p>
+        <p>Pris: @article.StartingPrice.ToString("c")</p>
+        <p>Skapad år: @article.YearCreated</p>
     </div>
 }
