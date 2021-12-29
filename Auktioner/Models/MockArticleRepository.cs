@@ -33,9 +33,15 @@ namespace Auktioner.Models
                 }
             };
 
+     
+
         public IEnumerable<Article> ArticlesInStock()
         {
             return AllArticles.Where(a => a.Sold == false);
+        }   
+        public void AddToInventory(Article article)
+        {
+            
         }
     }
 }
