@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auktioner", "Auktioner.csproj", "{C6CC57B4-2601-4EAE-AD49-F43D7BAA3059}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auktioner.Tests", "..\Auktioner.Tests\Auktioner.Tests.csproj", "{7F901219-8E52-4C1A-9378-F465C3AD5AA5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6CC57B4-2601-4EAE-AD49-F43D7BAA3059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6CC57B4-2601-4EAE-AD49-F43D7BAA3059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6CC57B4-2601-4EAE-AD49-F43D7BAA3059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6CC57B4-2601-4EAE-AD49-F43D7BAA3059}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F901219-8E52-4C1A-9378-F465C3AD5AA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F901219-8E52-4C1A-9378-F465C3AD5AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F901219-8E52-4C1A-9378-F465C3AD5AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F901219-8E52-4C1A-9378-F465C3AD5AA5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD5A855F-FDAB-412A-8852-C8BE10FDFA78}
+	EndGlobalSection
+EndGlobal
