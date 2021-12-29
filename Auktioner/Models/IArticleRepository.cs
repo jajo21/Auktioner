@@ -6,5 +6,6 @@ namespace Auktioner.Models
     {
         IEnumerable<Article> AllArticles { get; }
         public IEnumerable<Article> ArticlesInStock();
+        public void AddToInventory(Article article);
     }
 }

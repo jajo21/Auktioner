@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,6 +22,12 @@ namespace Auktioner.Models
         public IEnumerable<Article> ArticlesInStock()
         {
             return _appDbContext.Articles.Where(a => a.Sold == false);
+        }
+        public void AddToInventory(Article article)
+        {
+            article.ArticleAdded = DateTime.Now;
+            _appDbContext.Articles.Add(article);
+            _appDbContext.SaveChanges();
         }
     }
 }

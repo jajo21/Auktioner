@@ -27,7 +27,8 @@ namespace Auktioner
         {
             services.AddDbContext<AppDbContext>(options =>
                 options.UseInMemoryDatabase("articles"));
-            services.AddScoped<IArticleRepository, MockArticleRepository>();
+            services.AddScoped<IArticleRepository, ArticleRepository>();
+            services.AddSession();
             services.AddControllersWithViews();
         }
 
@@ -46,6 +47,7 @@ namespace Auktioner
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
 

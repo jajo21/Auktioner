@@ -1,0 +1,62 @@
+﻿@model Article
+
+<form asp-action="Add" method="post" class="form-horizontal" role="form">
+    <h4>Skriv in uppgiferna till objektet du vill lägga till.</h4>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="ArticleId" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="ArticleId" class="form-control" />
+            <span asp-validation-for="ArticleId" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Name" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Costs" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Costs" class="form-control" />
+            <span asp-validation-for="Costs" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StartingPrice" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="StartingPrice" class="form-control" />
+            <span asp-validation-for="StartingPrice" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="YearCreated" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="YearCreated" class="form-control" />
+            <span asp-validation-for="YearCreated" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input type="submit" class="btn btn-primary" value="Spara" />
+        </div>
+    </div>
+
+</form>

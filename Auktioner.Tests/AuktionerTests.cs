@@ -14,5 +14,15 @@ namespace Auktioner.Tests
             int actual = inventory.ArticlesInStock().Count();
             Assert.Equal(1, actual);
         }
+        //[Fact]
+        //public void AddArticlesToInventory() // 
+        //{
+        //    MockArticleRepository inventory = new();
+        //    Article article = new Article();
+        //    inventory.AddToInventory(article);
+        //    int actual = inventory.AllArticles.Count();
+        //    Assert.Equal(3, actual);
+        //}
+
     }
 }
