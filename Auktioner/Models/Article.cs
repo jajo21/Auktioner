@@ -44,8 +44,8 @@ namespace Auktioner.Models
         }
 
         [Required(ErrorMessage = "Var god ange ett korrekt årtal - exempel: 1991")]
-        [Display(Name = "Skapad - År - Format: YYYY")]
-        [DataType(DataType.Date)]
+        [Display(Name = "Skapad år (format YYYY)")]
+        //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy}", ApplyFormatInEditMode = true)]
         public int YearCreated
         {

@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace Auktioner.Models
 {
-    public class AppDbContext : DbContext // DbContext = en bas-DbContext klass som kommer från EF-Core paketet
+    public class AppDbContext : IdentityDbContext<IdentityUser>// DbContext = en bas-DbContext klass som kommer från EF-Core paketet
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
