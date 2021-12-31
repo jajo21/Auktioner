@@ -1,4 +1,4 @@
-﻿@model Article
+﻿@model AuctionItem
 
 <form asp-action="Add" method="post" class="form-horizontal" role="form">
     <h4>Skriv in uppgiferna till objektet du vill lägga till.</h4>
@@ -6,10 +6,10 @@
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="form-group">
-        <label asp-for="ArticleId" class="col-md-2 control-label"></label>
+        <label asp-for="AuctionItemId" class="col-md-2 control-label"></label>
         <div class="col-md-5">
-            <input asp-for="ArticleId" class="form-control" />
-            <span asp-validation-for="ArticleId" class="text-danger"></span>
+            <input asp-for="AuctionItemId" class="form-control" />
+            <span asp-validation-for="AuctionItemId" class="text-danger"></span>
         </div>
     </div>
 
@@ -46,10 +46,10 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="YearCreated" class="col-md-2 control-label"></label>
+        <label asp-for="Decade" class="col-md-2 control-label"></label>
         <div class="col-md-5">
-            <input asp-for="YearCreated" class="form-control" />
-            <span asp-validation-for="YearCreated" class="text-danger"></span>
+            <input asp-for="Decade" class="form-control" />
+            <span asp-validation-for="Decade" class="text-danger"></span>
         </div>
     </div>
 

@@ -1,48 +1,56 @@
 ﻿using Auktioner.Models;
 using Auktioner.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace Auktioner.Controllers
 {
+    [Authorize] // Måste logga in för att lägga till
     public class InventoryController : Controller
     {
-        private readonly IArticleRepository _articleRepository;
+        private readonly IAuctionItemRepository _auctionItemRepository;
+        //private readonly UserManager<AppUser> _userManager;
 
-        public InventoryController(IArticleRepository articleRepository)
+        public InventoryController(IAuctionItemRepository auctionItemRepository/*, UserManager<AppUser> userManager*/)
         {
-            _articleRepository = articleRepository;
+            _auctionItemRepository = auctionItemRepository;
+            //_userManager = userManager;
         }
 
         public ViewResult List()
         {
             InventoryListViewModel articleListViewModel = new();
-            articleListViewModel.Articles = _articleRepository.ArticlesInStock();
+            articleListViewModel.AuctionItems = _auctionItemRepository.AuctionItemsInStock();
             return View(articleListViewModel);
         }
-
-        // FÖR ATT LÄGGA TILL INVETARIER
-        [Authorize] // Måste logga in för att lägga till
-        public IActionResult Add()
+        
+        public IActionResult Edit(string itemId)
         {
-            return View();
+            var selectedAuctionItem = _auctionItemRepository.AllAuctionItems.FirstOrDefault(item => item.AuctionItemId == itemId);
+            return View(selectedAuctionItem);
         }
         [HttpPost]
-        public IActionResult Add(Article article)
+        public IActionResult Edit(AuctionItem changedItem)
         {
-            if(ModelState.IsValid)
+            AuctionItem auctionItem = _auctionItemRepository.GetAuctionItemByID(changedItem.AuctionItemId);
+            if (ModelState.IsValid)
             {
-                _articleRepository.AddToInventory(article);
-                return RedirectToAction("ArticleAdded");
-            }
-            return View(article);
-        }
+                auctionItem.Name = changedItem.Name;
+                auctionItem.Description = changedItem.Description;
+                auctionItem.StartingPrice = changedItem.StartingPrice;
+                auctionItem.Costs = changedItem.Costs;
 
-        public IActionResult ArticleAdded()
+                _auctionItemRepository.Update(auctionItem);
+                return RedirectToAction("AuctionItemUpdated");
+            }
+            return View(auctionItem);
+        }
+        public IActionResult AuctionItemUpdated()
         {
-            ViewBag.ArticleAddedMessage = "Tack. Du har nu lagt till artikeln till inventarierna!";
+            ViewBag.AuctionItemUpdatedMessage = "Tack. Du har nu uppdaterat objektet!";
             return View();
         }
-
     }
 }
