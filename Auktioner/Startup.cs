@@ -31,7 +31,7 @@ namespace Auktioner
 
             services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
 
-            services.AddScoped<IArticleRepository, ArticleRepository>();
+            services.AddScoped<IAuctionItemRepository, AuctionItemRepository>();
             services.AddSession();
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -58,7 +58,6 @@ namespace Auktioner
             app.UseAuthentication();
             app.UseAuthorization();
             
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

@@ -5,11 +5,11 @@ namespace Auktioner.ViewModels
 {
     public class InventoryListViewModel
     {
-        IEnumerable<Article> articles;
-        public IEnumerable<Article> Articles
+        IEnumerable<AuctionItem> auctionItems;
+        public IEnumerable<AuctionItem> AuctionItems
         {
-            get { return this.articles; }
-            set { this.articles = value; }
+            get { return this.auctionItems; }
+            set { this.auctionItems = value; }
         }
     }
 }

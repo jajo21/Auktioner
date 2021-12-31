@@ -1,0 +1,52 @@
+﻿@model AuctionItem
+
+<form asp-action="Edit" method="post" class="form-horizontal" role="form">
+    <h4>Skriv in uppgiferna till objektet du vill lägga till.</h4>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+    <input hidden asp-for="AuctionItemId" />
+
+
+    <div class="form-group">
+        <label asp-for="Name" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Costs" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Costs" class="form-control" />
+            <span asp-validation-for="Costs" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StartingPrice" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="StartingPrice" class="form-control" />
+            <span asp-validation-for="StartingPrice" class="text-danger"></span>
+        </div>
+    </div>
+
+    <input hidden asp-for="Decade" />
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input type="submit" class="btn btn-primary" value="Spara" /> <a asp-controller="Inventory" asp-action="List" class="btn btn-primary">Avbryt</a>
+        </div>
+    </div>
+
+</form>

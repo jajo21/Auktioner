@@ -10,9 +10,9 @@ namespace Auktioner.Tests
         [Fact]
         public void GetArticlesInStock() // Kontrollerar att det går att hämta artiklar som inte är sålda
         {
-            MockArticleRepository inventory = new();
-            int actual = inventory.ArticlesInStock().Count();
-            Assert.Equal(1, actual);
+            //MockArticleRepository inventory = new();
+            //int actual = inventory.AuctionItemsInStock().Count();
+            //Assert.Equal(1, actual);
         }
         //[Fact]
         //public void AddArticlesToInventory() // 
@@ -23,6 +23,11 @@ namespace Auktioner.Tests
         //    int actual = inventory.AllArticles.Count();
         //    Assert.Equal(3, actual);
         //}
+        [Fact]
+        public void ItemsWithCostsHigherThanStartPriceShouldNotBeAbleToBeAdded() 
+        {
+
+        }
 
     }
 }

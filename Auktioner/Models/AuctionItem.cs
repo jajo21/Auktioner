@@ -1,30 +1,31 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using Auktioner.CustomValidation;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Auktioner.Models
 {
-    public class Article
+    public class AuctionItem
     {
         
-        string articleId; //3 bokstäver och 6 siffror
+        string auctionItemId; //3 bokstäver och 6 siffror
         string name;
         string description;
-        int yearCreated;
+        int decade;
         double startingPrice; // får aldrig vara lägre än costs
         double finalPrice;
         double costs; 
-        bool sold = false;
+        bool inStock = true;
         int categoryId;
-        DateTime articleAdded;
+        Category category;
 
         [Required(ErrorMessage = "Var god ange ett korrekt ID med 3 bokstäver och 6 siffror - exempel: ABC123456")]
-        [Display(Name = "Artikel ID")]
-        [StringLength(9, MinimumLength = 9)]
-        public string ArticleId
+        [Display(Name = "Artikel ID - exempel: ABC123456")]
+        [RegularExpression(@"^[A-Za-z]{3}\d{6}$", ErrorMessage = "Var god ange ett korrekt ID med 3 bokstäver och 6 siffror - exempel: ABC123456")]
+        public string AuctionItemId
         {
-            get { return this.articleId; }
-            set { this.articleId = value; }
+            get { return this.auctionItemId; }
+            set { this.auctionItemId = value; }
         }
 
         [Required(ErrorMessage = "Var god ange ett namn på artikeln")]
@@ -43,30 +44,30 @@ namespace Auktioner.Models
             set { this.description = value; }
         }
 
-        [Required(ErrorMessage = "Var god ange ett korrekt årtal - exempel: 1991")]
-        [Display(Name = "Skapad år (format YYYY)")]
-        //[DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy}", ApplyFormatInEditMode = true)]
-        public int YearCreated
+        [Required(ErrorMessage = "Var god ange ett korrekt årtionde - exempel: 1990")]
+        [Display(Name = "Skapad årtionde (format YYYY)")]
+        [RegularExpression(@"^\d{3}0{1}$", ErrorMessage = "Var god ange ett korrekt årtal enligt formatet YYYY och avsluta med 0")]
+        public int Decade
         {
-            get { return this.yearCreated; }
-            set { this.yearCreated = value; }    
+            get { return this.decade; }
+            set { this.decade = value; }    
         }
 
         [Required(ErrorMessage = "Var god ange ett utgångspris")]
         [DataType(DataType.Currency)]
         [Display(Name = "Utgångspris")]
-        [Range(0, int.MaxValue, ErrorMessage = "Utgångspriset måste vara ett positivt nummer")]
+        [Range(1, double.MaxValue, ErrorMessage = "Utgångspriset måste vara högre än kostnaderna")]
+        [StartPriceHigherThanCosts]
         public double StartingPrice
         {
             get { return this.startingPrice; }
-            set { this.startingPrice = value; }
+            set {  this.startingPrice = value; }
         }
 
         [Required(ErrorMessage = "Var god ange ett slutpris")]
         [DataType(DataType.Currency)]
         [Display(Name = "Slutpris")]
-        [Range(0, int.MaxValue, ErrorMessage = "Slutpriset måste vara ett positivt nummer")]
+        [Range(0, double.MaxValue, ErrorMessage = "Slutpriset måste vara ett positivt nummer")]
         public double FinalPrice
         {
             get { return this.finalPrice; }
@@ -75,8 +76,9 @@ namespace Auktioner.Models
 
         [Required(ErrorMessage = "Var god ange totala kostnader för artikeln")]
         [DataType(DataType.Currency)]
-        [Display(Name = "Total kostnad för artikel")]
-        [Range(0, int.MaxValue, ErrorMessage = "Kostnaden måste vara ett positivt nummer")]
+        [Display(Name = "Total kostnad")]
+        [Range(0, double.MaxValue, ErrorMessage = "Kostnaden måste vara ett positivt nummer")]
+        [StartPriceHigherThanCosts]
         public double Costs
         {
             get { return this.costs; }
@@ -84,20 +86,20 @@ namespace Auktioner.Models
         }
         [Required(ErrorMessage = "Kryssa i om den är såld eller ej")]
         [Display(Name = "Är artikeln såld")]
-        public bool Sold
+        public bool InStock
         {
-            get { return this.sold; }
-            set { this.sold = value; }
+            get { return this.inStock; }
+            set { this.inStock = value; }
         }
         public int CategoryId
         {
             get { return this.categoryId; }
             set { this.categoryId = value; }
         }
-        public DateTime ArticleAdded
+        public Category Category
         {
-            get { return this.articleAdded; }
-            set { this.articleAdded = value; }
+            get { return this.category; }
+            set { this.category = value; }
         }
     }
 }

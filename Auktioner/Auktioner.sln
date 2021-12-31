@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auktioner", "Auktioner.csproj", "{C6CC57B4-2601-4EAE-AD49-F43D7BAA3059}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auktioner.Tests", "..\Auktioner.Tests\Auktioner.Tests.csproj", "{7F901219-8E52-4C1A-9378-F465C3AD5AA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auktioner.Tests", "..\Auktioner.Tests\Auktioner.Tests.csproj", "{7F901219-8E52-4C1A-9378-F465C3AD5AA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

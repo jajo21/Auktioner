@@ -3,14 +3,13 @@
 @{
     ViewData["Title"] = "Invetarier";
 }
-@foreach (var article in Model.Articles)
+@foreach (var auctionItem in Model.AuctionItems)
 {
-    <div>    
-        <h2>@article.Name</h2>
-        <p>Datum: @article.ArticleAdded</p>
-        <p>ID: @article.ArticleId</p>
-        <p>Beskrivning: @article.Description</p>
-        <p>Pris: @article.StartingPrice.ToString("c")</p>
-        <p>Skapad år: @article.YearCreated</p>
+    <div class="border">
+        <partial name="_AuctionItemCard" model="auctionItem" />
+        <div>
+            <a asp-area="" asp-controller="Inventory" asp-action="Edit" asp-route-itemId="@auctionItem.AuctionItemId">Edit</a>
+        </div>
     </div>
+
 }
