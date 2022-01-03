@@ -17,7 +17,7 @@ namespace Auktioner.Models
             get { return this.categoryName; }
             set { this.categoryName = value; }
         }
-        List<AuctionItem> AuctionItems
+        public List<AuctionItem> AuctionItems
         {
             get { return this.auctionItems; }
             set { this.auctionItems = value;}

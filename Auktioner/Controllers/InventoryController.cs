@@ -34,7 +34,7 @@ namespace Auktioner.Controllers
         [HttpPost]
         public IActionResult Edit(AuctionItem changedItem)
         {
-            AuctionItem auctionItem = _auctionItemRepository.GetAuctionItemByID(changedItem.AuctionItemId);
+            AuctionItem auctionItem = _auctionItemRepository.GetAuctionItemById(changedItem.AuctionItemId);
             if (ModelState.IsValid)
             {
                 auctionItem.Name = changedItem.Name;

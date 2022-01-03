@@ -13,7 +13,6 @@ namespace Auktioner.Models
 
         DbSet<AuctionItem> articles;
         DbSet<Category> categories;
-        //DbSet<AppUser> appUsers;
         
         public DbSet<AuctionItem> AuctionItems
         {
@@ -25,11 +24,6 @@ namespace Auktioner.Models
             get { return this.categories; }
             set { this.categories = value; }
         }
-        //public DbSet<AppUser> AppUsers
-        //{
-        //    get { return this.appUsers; }
-        //    set { this.appUsers = value; }
-        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -49,7 +43,7 @@ namespace Auktioner.Models
                 Decade = 1990,
                 StartingPrice = 1000,
                 Costs = 700,
-                CategoryId = 1
+                CategoryName = "Vinter"
             });
 
             modelBuilder.Entity<AuctionItem>().HasData(new AuctionItem
@@ -62,7 +56,7 @@ namespace Auktioner.Models
                 FinalPrice = 1300,
                 Costs = 800,
                 InStock = false,
-                CategoryId = 2
+                CategoryName = "Sommar"
             });
         }
     }

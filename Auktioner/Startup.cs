@@ -32,7 +32,7 @@ namespace Auktioner
             services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
 
             services.AddScoped<IAuctionItemRepository, AuctionItemRepository>();
-            services.AddSession();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -52,7 +52,6 @@ namespace Auktioner
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSession();
 
             app.UseRouting();
             app.UseAuthentication();

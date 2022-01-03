@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Auktioner.Models
 {
@@ -12,5 +13,33 @@ namespace Auktioner.Models
         }
 
         public IEnumerable<Category> AllCategories => _appDbContext.Categories;
+
+        public Category GetCategoryByName(string categoryName)
+        {
+            return _appDbContext.Categories.FirstOrDefault(c => c.CategoryName == categoryName);
+        }
+        public void AddCategory(Category category)
+        {
+            foreach(var _category in _appDbContext.Categories)
+            {
+                if(category.CategoryName != _category.CategoryName)
+                {
+                    _appDbContext.Categories.Add(category);
+                    _appDbContext.SaveChanges();
+                }
+            }  
+        }
+
+        public void RemoveCategory(Category category)
+        {
+            foreach (var _category in _appDbContext.Categories)
+            {
+                if (_category.AuctionItems.Count() == 0)
+                {
+                    _appDbContext.Categories.Remove(category);
+                    _appDbContext.SaveChanges();
+                }
+            }
+        }
     }
 }
