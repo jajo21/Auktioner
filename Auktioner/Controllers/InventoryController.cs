@@ -41,6 +41,7 @@ namespace Auktioner.Controllers
                 auctionItem.Description = changedItem.Description;
                 auctionItem.StartingPrice = changedItem.StartingPrice;
                 auctionItem.Costs = changedItem.Costs;
+                auctionItem.CategoryName = changedItem.CategoryName;
 
                 _auctionItemRepository.Update(auctionItem);
                 return RedirectToAction("AuctionItemUpdated");

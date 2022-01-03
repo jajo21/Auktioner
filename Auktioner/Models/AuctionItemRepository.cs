@@ -23,6 +23,10 @@ namespace Auktioner.Models
         {
             return _appDbContext.AuctionItems.Where(a => a.InStock == true);
         }
+        public IEnumerable<AuctionItem> SoldAuctionItems()
+        {
+            return _appDbContext.AuctionItems.Where(a => a.InStock == false);
+        }
 
         public AuctionItem GetAuctionItemById(string id)
         {
@@ -30,7 +34,7 @@ namespace Auktioner.Models
         }        
         public void AddToInventory(AuctionItem item)
         {
-            if(item.Costs < item.StartingPrice)// Domänlogik behövs för att inte kunna lägga till en artikel där kostnad är högra än utgångspris ????
+            if(item.Costs < item.StartingPrice)
             {
                 _appDbContext.AuctionItems.Add(item);
                 _appDbContext.SaveChanges();
@@ -41,10 +45,17 @@ namespace Auktioner.Models
             _appDbContext.AuctionItems.Update(item);
             _appDbContext.SaveChanges();
         }
-        //public void RemoveFromInventory(AuctionItem article)
-        //{
-        //    _appDbContext.AuctionItems.Remove(article);
-        //    _appDbContext.SaveChanges();
-        //}
+
+        public void SetInStock(AuctionItem item)
+        {
+            if(item.InStock)
+            {
+                _appDbContext.AuctionItems.FirstOrDefault(auctionItem => auctionItem.Name == item.Name).InStock = false;
+            }
+            else
+            {
+                _appDbContext.AuctionItems.FirstOrDefault(auctionItem => auctionItem.Name == item.Name).InStock = true;
+            }
+        }
     }
 }

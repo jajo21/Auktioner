@@ -20,14 +20,14 @@ namespace Auktioner.Models
         }
         public void AddCategory(Category category)
         {
-            foreach(var _category in _appDbContext.Categories)
+            var isCategoryInList = _appDbContext.Categories.FirstOrDefault(c => c.CategoryName == category.CategoryName);
+            if (isCategoryInList == null)
             {
-                if(category.CategoryName != _category.CategoryName)
-                {
-                    _appDbContext.Categories.Add(category);
-                    _appDbContext.SaveChanges();
-                }
-            }  
+                int categoryId = _appDbContext.Categories.Count();
+                category.CategoryId = categoryId+1;
+                _appDbContext.Categories.Add(category);
+                _appDbContext.SaveChanges();
+            }
         }
 
         public void RemoveCategory(Category category)

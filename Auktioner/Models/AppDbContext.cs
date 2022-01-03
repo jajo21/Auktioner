@@ -44,6 +44,7 @@ namespace Auktioner.Models
                 StartingPrice = 1000,
                 Costs = 700,
                 CategoryName = "Vinter"
+
             });
 
             modelBuilder.Entity<AuctionItem>().HasData(new AuctionItem
