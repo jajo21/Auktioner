@@ -7,8 +7,7 @@ namespace Auktioner.Controllers
     {
         private readonly IAuctionItemRepository _auctionItemRepository;
 
-
-        public AddItemController(IAuctionItemRepository auctionItemRepository/*, UserManager<AppUser> userManager*/)
+        public AddItemController(IAuctionItemRepository auctionItemRepository)
         {
             _auctionItemRepository = auctionItemRepository;
         }

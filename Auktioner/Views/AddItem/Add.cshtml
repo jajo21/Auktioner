@@ -1,4 +1,5 @@
 ﻿@model AuctionItem
+@inject ICategoryRepository _categoryRepository
 
 <form asp-action="Add" method="post" class="form-horizontal" role="form">
     <h4>Skriv in uppgiferna till objektet du vill lägga till.</h4>
@@ -51,6 +52,16 @@
             <input asp-for="Decade" class="form-control" />
             <span asp-validation-for="Decade" class="text-danger"></span>
         </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CategoryName" class="col-md-2 control-label"></label>
+        <select asp-for="CategoryName">
+            @foreach(var category in _categoryRepository.AllCategories)
+            {
+                <option class="form-control">@category.CategoryName</option>
+            }
+        </select>
     </div>
 
     <div class="form-group">

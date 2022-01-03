@@ -16,13 +16,18 @@ namespace Auktioner.Models
         {
             get
             {
-                return _appDbContext.AuctionItems;
+                return _appDbContext.AuctionItems.Include(c => c.Category);
             }
         }
         public IEnumerable<AuctionItem> AuctionItemsInStock()
         {
             return _appDbContext.AuctionItems.Where(a => a.InStock == true);
         }
+
+        public AuctionItem GetAuctionItemById(string id)
+        {
+            return _appDbContext.AuctionItems.FirstOrDefault(item => item.AuctionItemId == id);
+        }        
         public void AddToInventory(AuctionItem item)
         {
             if(item.Costs < item.StartingPrice)// Domänlogik behövs för att inte kunna lägga till en artikel där kostnad är högra än utgångspris ????
@@ -30,10 +35,6 @@ namespace Auktioner.Models
                 _appDbContext.AuctionItems.Add(item);
                 _appDbContext.SaveChanges();
             }
-        }
-        public AuctionItem GetAuctionItemByID(string id)
-        {
-            return _appDbContext.AuctionItems.FirstOrDefault(item => item.AuctionItemId == id);
         }
         public void Update(AuctionItem item)
         {

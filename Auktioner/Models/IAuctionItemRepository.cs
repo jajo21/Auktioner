@@ -6,8 +6,8 @@ namespace Auktioner.Models
     {
         IEnumerable<AuctionItem> AllAuctionItems { get; }
         public IEnumerable<AuctionItem> AuctionItemsInStock();
-        public void AddToInventory(AuctionItem auctionItem);
-        public AuctionItem GetAuctionItemByID(string id);
-        public void Update(AuctionItem article);
+        public void AddToInventory(AuctionItem item);
+        public AuctionItem GetAuctionItemById(string id);
+        public void Update(AuctionItem item);
     }
 }

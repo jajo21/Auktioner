@@ -16,7 +16,7 @@ namespace Auktioner.Models
         double finalPrice;
         double costs; 
         bool inStock = true;
-        int categoryId;
+        string categoryName;
         Category category;
 
         [Required(ErrorMessage = "Var god ange ett korrekt ID med 3 bokstäver och 6 siffror - exempel: ABC123456")]
@@ -46,7 +46,7 @@ namespace Auktioner.Models
 
         [Required(ErrorMessage = "Var god ange ett korrekt årtionde - exempel: 1990")]
         [Display(Name = "Skapad årtionde (format YYYY)")]
-        [RegularExpression(@"^\d{3}0{1}$", ErrorMessage = "Var god ange ett korrekt årtal enligt formatet YYYY och avsluta med 0")]
+        [RegularExpression(@"^\d{3}0{1}$", ErrorMessage = "Var god ange ett korrekt årtionde enligt formatet YYYY och avsluta med siffran 0")]
         public int Decade
         {
             get { return this.decade; }
@@ -91,10 +91,12 @@ namespace Auktioner.Models
             get { return this.inStock; }
             set { this.inStock = value; }
         }
-        public int CategoryId
+        [Required(ErrorMessage = "Välj kategori")]
+        [Display(Name = "Välj kategori")]
+        public string CategoryName
         {
-            get { return this.categoryId; }
-            set { this.categoryId = value; }
+            get { return this.categoryName; }
+            set { this.categoryName = value; }
         }
         public Category Category
         {
