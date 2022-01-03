@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Auktioner.CustomValidation;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Auktioner.Models
 {
@@ -12,6 +14,11 @@ namespace Auktioner.Models
             get { return this.categoryId; }
             set { this.categoryId = value; }
         }
+
+        [Required(ErrorMessage = "Var god ange ett namn på kategorin")]
+        [Display(Name = "Kategori")]
+        [StringLength(50, ErrorMessage = "Kategorin får inte vara längre än 50 tecken")]
+        [CategoryDontExist]
         public string CategoryName
         {
             get { return this.categoryName; }
