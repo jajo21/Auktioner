@@ -1,4 +1,5 @@
 using Auktioner.Models;
+using FoolProof.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,6 +36,7 @@ namespace Auktioner
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddFoolProof();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

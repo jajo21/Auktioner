@@ -16,7 +16,7 @@ namespace Auktioner.Models
         {
             get
             {
-                return _appDbContext.AuctionItems.Include(c => c.Category);
+                return _appDbContext.AuctionItems;
             }
         }
         public IEnumerable<AuctionItem> AuctionItemsInStock()
@@ -34,7 +34,8 @@ namespace Auktioner.Models
         }        
         public void AddToInventory(AuctionItem item)
         {
-            if(item.Costs < item.StartingPrice)
+            var AuctionItem = _appDbContext.AuctionItems.FirstOrDefault(i => i.AuctionItemId == item.AuctionItemId);
+            if (item.Costs < item.StartingPrice && AuctionItem == null)
             {
                 _appDbContext.AuctionItems.Add(item);
                 _appDbContext.SaveChanges();

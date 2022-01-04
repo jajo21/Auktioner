@@ -1,6 +1,4 @@
-﻿using Auktioner.CustomValidation;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Auktioner.Models
@@ -14,14 +12,15 @@ namespace Auktioner.Models
         int decade;
         double startingPrice; // får aldrig vara lägre än costs
         double finalPrice;
-        double costs; 
+        double costs;
+        string purchaser; 
         bool inStock = true;
         string categoryName;
-        Category category;
-
-        [Required(ErrorMessage = "Var god ange ett korrekt ID med 3 bokstäver och 6 siffror - exempel: ABC123456")]
+        
+        [Required(ErrorMessage = "Var god ange ett korrekt ID med 3 versaler och 6 siffror - exempel: ABC123456")]
         [Display(Name = "Artikel ID - exempel: ABC123456")]
-        [RegularExpression(@"^[A-Za-z]{3}\d{6}$", ErrorMessage = "Var god ange ett korrekt ID med 3 bokstäver och 6 siffror - exempel: ABC123456")]
+        [RegularExpression(@"^[A-Z]{3}\d{6}$", ErrorMessage = "Var god ange ett korrekt ID med 3 versaler och 6 siffror - exempel: ABC123456")]
+        [Key]
         public string AuctionItemId
         {
             get { return this.auctionItemId; }
@@ -57,7 +56,6 @@ namespace Auktioner.Models
         [DataType(DataType.Currency)]
         [Display(Name = "Utgångspris")]
         [Range(1, double.MaxValue, ErrorMessage = "Utgångspriset måste vara högre än kostnaderna")]
-        [StartPriceHigherThanCosts]
         public double StartingPrice
         {
             get { return this.startingPrice; }
@@ -78,30 +76,32 @@ namespace Auktioner.Models
         [DataType(DataType.Currency)]
         [Display(Name = "Total kostnad")]
         [Range(0, double.MaxValue, ErrorMessage = "Kostnaden måste vara ett positivt nummer")]
-        [StartPriceHigherThanCosts]
         public double Costs
         {
             get { return this.costs; }
             set { this.costs = value; }
         }
+
         [Required(ErrorMessage = "Kryssa i om den är såld eller ej")]
         [Display(Name = "Är artikeln såld")]
         public bool InStock
         {
             get { return this.inStock; }
             set { this.inStock = value; }
+        }        
+
+        public string Purchaser
+        {
+            get { return this.purchaser; }
+            set { this.purchaser = value;}
         }
+
         [Required(ErrorMessage = "Välj kategori")]
         [Display(Name = "Välj kategori")]
         public string CategoryName
         {
             get { return this.categoryName; }
             set { this.categoryName = value; }
-        }
-        public Category Category
-        {
-            get { return this.category; }
-            set { this.category = value; }
         }
     }
 }
