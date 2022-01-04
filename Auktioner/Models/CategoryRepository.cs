@@ -35,5 +35,15 @@ namespace Auktioner.Models
             _appDbContext.Categories.Remove(category); // Behöver felhantering så den inte tar bort categorier som innehåller objekt
             _appDbContext.SaveChanges();
         }
+
+        //public void RemoveCategory(int id)   EXEMPEL SOM GÅR ATT TESTA VID TID
+        //{
+        //    Category category = _appDbContext.Categories.FirstOrDefault(c => c.CategoryId == id);
+        //    if (category != null)
+        //    {
+        //        _appDbContext.Categories.Remove(category); // Behöver felhantering så den inte tar bort categorier som innehåller objekt
+        //        _appDbContext.SaveChanges();
+        //    }
+        //}
     }
 }

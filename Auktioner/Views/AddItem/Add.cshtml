@@ -11,7 +11,9 @@
         <label asp-for="AuctionItemId" class="col-md-2 control-label"></label>
         <div class="col-md-5">
             <input asp-for="AuctionItemId" class="form-control" />
+            @*@Html.TextBoxFor(m => m.AuctionItemId, new {placeholder = "Ex. ABC123456", @class = "form-control"})*@
             <span asp-validation-for="AuctionItemId" class="text-danger"></span>
+            <span class="text-danger">@ViewBag.IDExists</span>
         </div>
     </div>
 

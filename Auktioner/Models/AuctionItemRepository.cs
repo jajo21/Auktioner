@@ -43,8 +43,12 @@ namespace Auktioner.Models
         }
         public void Update(AuctionItem item)
         {
-            _appDbContext.AuctionItems.Update(item);
-            _appDbContext.SaveChanges();
+            var auctionItem = _appDbContext.AuctionItems.FirstOrDefault(a => a.AuctionItemId == item.AuctionItemId);
+            if(auctionItem != null)
+            {
+                _appDbContext.AuctionItems.Update(item);
+                _appDbContext.SaveChanges();
+            }
         }
 
         public void SetInStock(AuctionItem item)
