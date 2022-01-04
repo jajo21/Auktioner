@@ -29,7 +29,7 @@ namespace Auktioner
             services.AddDbContext<AppDbContext>(options =>
                 options.UseInMemoryDatabase("articles"));
 
-            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddDefaultIdentity<AppUser>().AddEntityFrameworkStores<AppDbContext>();
 
             services.AddScoped<IAuctionItemRepository, AuctionItemRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();

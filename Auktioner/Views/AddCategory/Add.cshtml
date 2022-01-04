@@ -2,10 +2,12 @@
 @inject ICategoryRepository _categoryRepository
 
 <h4>Det här är de nuvarande kategorierna som finns tillgängliga:</h4>
-@foreach(var category in _categoryRepository.AllCategories)
-{
-    <p>@category.CategoryName</p>
-}
+<div class="col-md-2">
+    @foreach(var category in _categoryRepository.AllCategories)
+    {
+        <p>@category.CategoryName</p>
+    }
+</div>
 
 <form asp-action="Add" method="post" class="form-horizontal" role="form">
     <h4>Skriv in namnet på den kategori du vill lägga till</h4>

@@ -18,7 +18,6 @@ namespace Auktioner.Models
         [Required(ErrorMessage = "Var god ange ett namn på kategorin")]
         [Display(Name = "Kategori")]
         [StringLength(50, ErrorMessage = "Kategorin får inte vara längre än 50 tecken")]
-        [CategoryDontExist]
         public string CategoryName
         {
             get { return this.categoryName; }

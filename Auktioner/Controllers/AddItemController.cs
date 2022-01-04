@@ -1,8 +1,10 @@
 ﻿using Auktioner.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Auktioner.Controllers
 {
+    [Authorize]
     public class AddItemController : Controller
     {
         private readonly IAuctionItemRepository _auctionItemRepository;
