@@ -45,7 +45,7 @@ namespace Auktioner.Models
 
         [Required(ErrorMessage = "Var god ange ett korrekt årtionde - exempel: 1990")]
         [Display(Name = "Skapad årtionde (format YYYY)")]
-        [RegularExpression(@"^\d{3}0{1}$", ErrorMessage = "Var god ange ett korrekt årtionde enligt formatet YYYY och avsluta med siffran 0")]
+        [RegularExpression(@"^\d{3}0{1}$", ErrorMessage = "Var god ange ett korrekt årtionde enligt formatet YYYY och avsluta med siffran 0")] // BEHÖVER FIXAS SÅ MAN KAN SKRIVA 0010
         public int Decade
         {
             get { return this.decade; }

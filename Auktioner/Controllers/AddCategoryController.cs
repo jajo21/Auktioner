@@ -25,7 +25,6 @@ namespace Auktioner.Controllers
         [HttpPost]
         public IActionResult Add(AddCategoryViewModel model)
         {
-
             if (ModelState.IsValid)
             {
                 Category category = new()

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Auktioner.Controllers
 {
@@ -29,6 +30,14 @@ namespace Auktioner.Controllers
         [HttpPost]
         public IActionResult Add(AddItemViewModel model)
         {
+            var auctionItemExists = _auctionItemRepository.AllAuctionItems.FirstOrDefault(i => i.AuctionItemId == model.AuctionItemId);
+            if(auctionItemExists != null)
+            {
+                model.Categories = _categoryRepository.AllCategories;
+                ViewBag.IDExists = "ID upptaget, testa ett annat";
+                return View(model);
+            }
+
             if (ModelState.IsValid)
             {
                 AuctionItem auctionItem = new()
