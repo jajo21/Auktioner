@@ -5,11 +5,10 @@
 }
 @foreach (var auctionItem in Model.AuctionItems)
 {
-    <div class="border">
+    <div class="form-group">
         <partial name="_AuctionItemCard" model="auctionItem" />
-        <div>
-            <a asp-area="" asp-controller="Inventory" asp-action="Edit" asp-route-itemId="@auctionItem.AuctionItemId">Edit</a>
+        <div class="col-md-offset-2 col-md-5">
+            <a asp-area="" asp-controller="Inventory" asp-action="Edit" asp-route-itemId="@auctionItem.AuctionItemId" class="btn btn-primary">Edit</a>
         </div>
     </div>
-
 }

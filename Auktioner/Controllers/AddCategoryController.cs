@@ -1,8 +1,10 @@
 ﻿using Auktioner.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Auktioner.Controllers
 {
+    [Authorize]
     public class AddCategoryController : Controller
     {
         private readonly ICategoryRepository _categoryRepository;
