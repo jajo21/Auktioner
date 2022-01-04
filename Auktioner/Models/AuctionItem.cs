@@ -18,7 +18,7 @@ namespace Auktioner.Models
         string categoryName;
         
         [Required(ErrorMessage = "Var god ange ett korrekt ID med 3 versaler och 6 siffror - exempel: ABC123456")]
-        [Display(Name = "Artikel ID - exempel: ABC123456")]
+        [Display(Name = "Artikel ID")]
         [RegularExpression(@"^[A-Z]{3}\d{6}$", ErrorMessage = "Var god ange ett korrekt ID med 3 versaler och 6 siffror - exempel: ABC123456")]
         [Key]
         public string AuctionItemId
@@ -44,8 +44,8 @@ namespace Auktioner.Models
         }
 
         [Required(ErrorMessage = "Var god ange ett korrekt årtionde - exempel: 1990")]
-        [Display(Name = "Skapad årtionde (format YYYY)")]
-        [RegularExpression(@"^\d{3}0{1}$", ErrorMessage = "Var god ange ett korrekt årtionde enligt formatet YYYY och avsluta med siffran 0")] // BEHÖVER FIXAS SÅ MAN KAN SKRIVA 0010
+        [Display(Name = "Skapad årtionde")]
+        [RegularExpression(@"^\d{1,3}0{1}$", ErrorMessage = "Var god ange ett korrekt årtionde enligt formaten YYYY/YYY/YY och avsluta med siffran 0")]
         public int Decade
         {
             get { return this.decade; }
@@ -55,7 +55,7 @@ namespace Auktioner.Models
         [Required(ErrorMessage = "Var god ange ett utgångspris")]
         [DataType(DataType.Currency)]
         [Display(Name = "Utgångspris")]
-        [Range(1, double.MaxValue, ErrorMessage = "Utgångspriset måste vara högre än kostnaderna")]
+        [Range(0, double.MaxValue, ErrorMessage = "Utgångspriset måste vara högre än kostnaderna")]
         public double StartingPrice
         {
             get { return this.startingPrice; }
