@@ -25,6 +25,7 @@
         <div class="col-md-5">
             <input asp-for="CategoryName" class="form-control" />
             <span asp-validation-for="CategoryName" class="text-danger"></span>
+            <span class="text-danger">@ViewBag.CategoryNameExists</span>
         </div>
     </div>
 

@@ -8,8 +8,12 @@
     <p>Skapad år: @Model.Decade</p> 
     <p>Inköpare: @Model.Purchaser</p>
     <p>Kategori: @Model.CategoryName</p>
-    @if(@Model.InStock == true)
+    <p>I lager: @Model.InStock</p>
+@*     @if(@Model.InStock)
     {
       <p>I lager: Ja</p>  
-    }
+    } else
+    {
+      <p>I lager: Nej</p> 
+    } *@
 </div>

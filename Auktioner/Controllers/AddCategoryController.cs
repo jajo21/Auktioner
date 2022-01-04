@@ -25,6 +25,14 @@ namespace Auktioner.Controllers
         [HttpPost]
         public IActionResult Add(AddCategoryViewModel model)
         {
+            model.Categories = _categoryRepository.AllCategories;
+            var categoryExists = _categoryRepository.AllCategories.FirstOrDefault(c => c.CategoryName == model.CategoryName);
+            if(categoryExists != null)
+            {
+                ViewBag.CategoryNameExists = "Kategorin finns redan, testa en annan";
+                return View(model);
+            }
+
             if (ModelState.IsValid)
             {
                 Category category = new()
@@ -35,7 +43,6 @@ namespace Auktioner.Controllers
                 _categoryRepository.AddCategory(category);
                 return RedirectToAction("CategoryAdded");
             }
-            model.Categories = _categoryRepository.AllCategories;
             return View(model);
         }
 

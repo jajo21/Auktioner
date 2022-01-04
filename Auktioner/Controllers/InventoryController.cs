@@ -41,15 +41,19 @@ namespace Auktioner.Controllers
         
         public IActionResult Edit(string itemId)
         {
-            var selectedAuctionItem = _auctionItemRepository.GetAuctionItemById(itemId);
+            var auctionItem = _auctionItemRepository.GetAuctionItemById(itemId);
+            if(auctionItem == null)
+            {
+                return NotFound();
+            }
             return View(new EditItemViewModel
             {
                 AuctionItemId = itemId,
-                Name = selectedAuctionItem.Name,
-                Description = selectedAuctionItem.Description,
-                Costs = selectedAuctionItem.Costs,
-                StartingPrice = selectedAuctionItem.StartingPrice,
-                CategoryName = selectedAuctionItem.CategoryName,
+                Name = auctionItem.Name,
+                Description = auctionItem.Description,
+                Costs = auctionItem.Costs,
+                StartingPrice = auctionItem.StartingPrice,
+                CategoryName = auctionItem.CategoryName,
                 Categories = _categoryRepository.AllCategories
             });
         }
