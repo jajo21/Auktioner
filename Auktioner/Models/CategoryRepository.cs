@@ -24,7 +24,7 @@ namespace Auktioner.Models
             if (isCategoryInList == null)
             {
                 int categoryId = _appDbContext.Categories.Count();
-                category.CategoryId = categoryId+1;
+                category.CategoryId = categoryId + 1;
                 _appDbContext.Categories.Add(category);
                 _appDbContext.SaveChanges();
             }
@@ -32,14 +32,8 @@ namespace Auktioner.Models
 
         public void RemoveCategory(Category category)
         {
-            foreach (var _category in _appDbContext.Categories)
-            {
-                if (_category.AuctionItems.Count() == 0)
-                {
-                    _appDbContext.Categories.Remove(category);
-                    _appDbContext.SaveChanges();
-                }
-            }
+            _appDbContext.Categories.Remove(category); // Behöver felhantering så den inte tar bort categorier som innehåller objekt
+            _appDbContext.SaveChanges();
         }
     }
 }

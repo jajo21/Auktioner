@@ -43,6 +43,7 @@ namespace Auktioner.Models
                 Decade = 1990,
                 StartingPrice = 1000,
                 Costs = 700,
+                Purchaser = "johannes@hotmail.se",
                 CategoryName = "Vinter"
 
             });
@@ -57,6 +58,31 @@ namespace Auktioner.Models
                 FinalPrice = 1300,
                 Costs = 800,
                 InStock = false,
+                Purchaser = "gretagranit@gg.se",
+                CategoryName = "Sommar"
+            });
+
+            modelBuilder.Entity<AuctionItem>().HasData(new AuctionItem
+            {
+                AuctionItemId = "BEF789123",
+                Name = "Artikel test3",
+                Description = "Artikel beskrivning3",
+                Decade = 1980,
+                StartingPrice = 1100,
+                Costs = 800,
+                Purchaser = "gretagranit@gg.se",
+                CategoryName = "Höst"
+            });
+
+            modelBuilder.Entity<AuctionItem>().HasData(new AuctionItem
+            {
+                AuctionItemId = "CEF789123",
+                Name = "Artikel test4",
+                Description = "Artikel beskrivning4",
+                Decade = 1980,
+                StartingPrice = 1100,
+                Costs = 800,
+                Purchaser = "johannes@hotmail.com",
                 CategoryName = "Sommar"
             });
         }

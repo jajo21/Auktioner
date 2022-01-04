@@ -7,46 +7,70 @@ using System.Linq;
 
 namespace Auktioner.Controllers
 {
-    [Authorize] // Måste logga in för att lägga till
+    [Authorize]
     public class InventoryController : Controller
     {
         private readonly IAuctionItemRepository _auctionItemRepository;
-        //private readonly UserManager<AppUser> _userManager;
+        private readonly ICategoryRepository _categoryRepository;
+        private readonly UserManager<AppUser> _userManager;
 
-        public InventoryController(IAuctionItemRepository auctionItemRepository/*, UserManager<AppUser> userManager*/)
+        public InventoryController(IAuctionItemRepository auctionItemRepository, ICategoryRepository categoryRepository, UserManager<AppUser> userManager)
         {
             _auctionItemRepository = auctionItemRepository;
-            //_userManager = userManager;
+            _categoryRepository = categoryRepository;
+            _userManager = userManager;
         }
 
         public ViewResult List()
         {
-            InventoryListViewModel articleListViewModel = new();
-            articleListViewModel.AuctionItems = _auctionItemRepository.AuctionItemsInStock();
-            return View(articleListViewModel);
+            var user = _userManager.Users.FirstOrDefault(u => u.Id == _userManager.GetUserId(User));
+            
+            if(user.IsAdmin)
+            {
+                InventoryListViewModel model = new();
+                model.AuctionItems = _auctionItemRepository.AuctionItemsInStock();
+                return View(model);
+            }
+            else
+            {
+                InventoryListViewModel model = new();
+                model.AuctionItems = _auctionItemRepository.AllAuctionItems.Where(i => i.Purchaser == user.UserName);
+                return View(model);
+            }
         }
         
         public IActionResult Edit(string itemId)
         {
-            var selectedAuctionItem = _auctionItemRepository.AllAuctionItems.FirstOrDefault(item => item.AuctionItemId == itemId);
-            return View(selectedAuctionItem);
+            var selectedAuctionItem = _auctionItemRepository.GetAuctionItemById(itemId);
+            return View(new EditItemViewModel
+            {
+                AuctionItemId = itemId,
+                Name = selectedAuctionItem.Name,
+                Description = selectedAuctionItem.Description,
+                Costs = selectedAuctionItem.Costs,
+                StartingPrice = selectedAuctionItem.StartingPrice,
+                CategoryName = selectedAuctionItem.CategoryName,
+                Categories = _categoryRepository.AllCategories
+            });
         }
+
         [HttpPost]
-        public IActionResult Edit(AuctionItem changedItem)
-        {
-            AuctionItem auctionItem = _auctionItemRepository.GetAuctionItemById(changedItem.AuctionItemId);
+        public IActionResult Edit(EditItemViewModel model)
+        { 
             if (ModelState.IsValid)
             {
-                auctionItem.Name = changedItem.Name;
-                auctionItem.Description = changedItem.Description;
-                auctionItem.StartingPrice = changedItem.StartingPrice;
-                auctionItem.Costs = changedItem.Costs;
-                auctionItem.CategoryName = changedItem.CategoryName;
+                AuctionItem auctionItem = _auctionItemRepository.GetAuctionItemById(model.AuctionItemId);
+                auctionItem.Name = model.Name;
+                auctionItem.Description = model.Description;
+                auctionItem.StartingPrice = model.StartingPrice;
+                auctionItem.Costs = model.Costs;
+                auctionItem.CategoryName = model.CategoryName;
 
                 _auctionItemRepository.Update(auctionItem);
                 return RedirectToAction("AuctionItemUpdated");
             }
-            return View(auctionItem);
+            model.Categories = _categoryRepository.AllCategories;
+            return View(model);
         }
         public IActionResult AuctionItemUpdated()
         {
