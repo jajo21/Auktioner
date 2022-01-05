@@ -13,6 +13,27 @@
 
 *Vad har du inte hunnit med i denna uppgift?*
 
+ |Krav|Uppfyllt|Egna Kommentarer|
+ |---|---|---|
+|**1**  |**Ja**| |
+|**2**  |**Ja**| |
+|**3**  |*nej*| |
+|**4**  |**Ja**| |
+|**5**  |**Ja**| |
+|**6**  |**Ja**| |
+|**7**  |**Ja**| |
+|**8**  |**Ja**| |
+|**9**  |**Ja**| |
+|**10**  |**Ja**| |
+|**11**  |**Ja**| |
+|**12**  |**Ja**| |
+|**13**  |*nej*| |
+|**14**  |**Ja**| |
+|**15**  |**Ja**| |
+|**16**  |*nej*| |
+|**17**  |*nej*| |
+|**18**  |*nej*| |
+
 ## Förtydliganden/motivering
 
 *Finns det något extra du vill förtydliga med din lösning? Både bra och mindre bra*
