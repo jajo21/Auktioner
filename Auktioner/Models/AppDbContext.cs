@@ -33,17 +33,15 @@ namespace Auktioner.Models
             modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 2, CategoryName = "Sommar" });
             modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 3, CategoryName = "Höst" });
 
-            //modelBuilder.Entity<AppUser>().HasData(new AppUser { AppUserId = 1, Email = "gretagranit@gg.se", });
-
             modelBuilder.Entity<AuctionItem>().HasData(new AuctionItem
             {
                 AuctionItemId = "ABC123456",
-                Name = "Artikel test",
-                Description = "Artikel beskrivning",
+                Name = "Vinterlådan",
+                Description = "Vinterlådan är en bra låda",
                 Decade = 1990,
                 StartingPrice = 1000,
                 Costs = 700,
-                Purchaser = "johannes@hotmail.se",
+                Purchaser = "vinter@gg.se",
                 CategoryName = "Vinter"
 
             });
@@ -51,38 +49,38 @@ namespace Auktioner.Models
             modelBuilder.Entity<AuctionItem>().HasData(new AuctionItem
             {
                 AuctionItemId = "DEF789123",
-                Name = "Artikel test2",
-                Description = "Artikel beskrivning2",
+                Name = "Sommarlådan",
+                Description = "Sommarlådan är en bra låda",
                 Decade = 1980,
                 StartingPrice = 1100,
                 FinalPrice = 1300,
                 Costs = 800,
                 InStock = false,
-                Purchaser = "gretagranit@gg.se",
+                Purchaser = "sommar@gg.se",
                 CategoryName = "Sommar"
             });
 
             modelBuilder.Entity<AuctionItem>().HasData(new AuctionItem
             {
                 AuctionItemId = "BEF789123",
-                Name = "Artikel test3",
-                Description = "Artikel beskrivning3",
+                Name = "Höstlådan",
+                Description = "Höstlådan är en bra låda",
                 Decade = 1980,
                 StartingPrice = 1100,
                 Costs = 800,
-                Purchaser = "gretagranit@gg.se",
+                Purchaser = "höst@gg.se",
                 CategoryName = "Höst"
             });
 
             modelBuilder.Entity<AuctionItem>().HasData(new AuctionItem
             {
                 AuctionItemId = "CEF789123",
-                Name = "Artikel test4",
-                Description = "Artikel beskrivning4",
+                Name = "Sommarlådan2",
+                Description = "Sommarlådan är en bra låda2",
                 Decade = 1980,
                 StartingPrice = 1100,
                 Costs = 800,
-                Purchaser = "johannes@hotmail.com",
+                Purchaser = "sommar@gg.se",
                 CategoryName = "Sommar"
             });
         }

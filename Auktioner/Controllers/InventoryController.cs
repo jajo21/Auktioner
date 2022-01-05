@@ -59,7 +59,7 @@ namespace Auktioner.Controllers
                 InStock = auctionItem.InStock,
                 CategoryName = auctionItem.CategoryName,
                 Categories = _categoryRepository.AllCategories,
-                modelUser = _userManager.Users.FirstOrDefault(u => u.Id == _userManager.GetUserId(User))
+                ModelUser = _userManager.Users.FirstOrDefault(u => u.Id == _userManager.GetUserId(User))
                 
             });
         }
@@ -69,7 +69,7 @@ namespace Auktioner.Controllers
         { 
             var user = _userManager.Users.FirstOrDefault(u => u.Id == _userManager.GetUserId(User));
             model.Categories = _categoryRepository.AllCategories;
-            model.modelUser = user;
+            model.ModelUser = user;
             if(user.IsAdmin)
             {
                 if (ModelState.IsValid)
