@@ -3,6 +3,7 @@ using Auktioner.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Auktioner.Controllers
@@ -24,18 +25,19 @@ namespace Auktioner.Controllers
         public ViewResult List()
         {
             var user = _userManager.Users.FirstOrDefault(u => u.Id == _userManager.GetUserId(User));
-            
             if(user.IsAdmin)
             {
-                InventoryListViewModel model = new();
-                model.AuctionItems = _auctionItemRepository.AuctionItemsInStock();
-                return View(model);
+                return View(new InventoryListViewModel
+                {
+                    AuctionItems = _auctionItemRepository.AuctionItemsInStock()
+                });
             }
             else
             {
-                InventoryListViewModel model = new();
-                model.AuctionItems = _auctionItemRepository.AllAuctionItems.Where(i => i.Purchaser == user.UserName);
-                return View(model);
+                return View(new InventoryListViewModel
+                {
+                    AuctionItems = _auctionItemRepository.SoldAuctionItems(user.UserName)
+                });
             }
         }
         
@@ -48,33 +50,61 @@ namespace Auktioner.Controllers
             }
             return View(new EditItemViewModel
             {
-                AuctionItemId = itemId,
+                AuctionItemId = auctionItem.AuctionItemId,
                 Name = auctionItem.Name,
                 Description = auctionItem.Description,
                 Costs = auctionItem.Costs,
                 StartingPrice = auctionItem.StartingPrice,
+                FinalPrice = auctionItem.FinalPrice,
+                InStock = auctionItem.InStock,
                 CategoryName = auctionItem.CategoryName,
-                Categories = _categoryRepository.AllCategories
+                Categories = _categoryRepository.AllCategories,
+                modelUser = _userManager.Users.FirstOrDefault(u => u.Id == _userManager.GetUserId(User))
+                
             });
         }
 
         [HttpPost]
         public IActionResult Edit(EditItemViewModel model)
         { 
-            if (ModelState.IsValid)
-            {
-                AuctionItem auctionItem = _auctionItemRepository.GetAuctionItemById(model.AuctionItemId);
-                auctionItem.Name = model.Name;
-                auctionItem.Description = model.Description;
-                auctionItem.StartingPrice = model.StartingPrice;
-                auctionItem.Costs = model.Costs;
-                auctionItem.CategoryName = model.CategoryName;
-
-                _auctionItemRepository.Update(auctionItem);
-                return RedirectToAction("AuctionItemUpdated");
-            }
+            var user = _userManager.Users.FirstOrDefault(u => u.Id == _userManager.GetUserId(User));
             model.Categories = _categoryRepository.AllCategories;
-            return View(model);
+            model.modelUser = user;
+            if(user.IsAdmin)
+            {
+                if (ModelState.IsValid)
+                {
+                    AuctionItem auctionItem = _auctionItemRepository.GetAuctionItemById(model.AuctionItemId);
+                    auctionItem.Name = model.Name;
+                    auctionItem.Description = model.Description;
+                    auctionItem.StartingPrice = model.StartingPrice;
+                    auctionItem.Costs = model.Costs;
+                    auctionItem.FinalPrice = model.FinalPrice;
+                    auctionItem.InStock = model.InStock;
+                    auctionItem.CategoryName = model.CategoryName;
+
+                    _auctionItemRepository.Update(auctionItem);
+                    return RedirectToAction("AuctionItemUpdated");
+                }
+                return View(model);
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    AuctionItem auctionItem = _auctionItemRepository.GetAuctionItemById(model.AuctionItemId);
+                    auctionItem.Name = model.Name;
+                    auctionItem.Description = model.Description;
+                    auctionItem.StartingPrice = model.StartingPrice;
+                    auctionItem.Costs = model.Costs;
+                    auctionItem.CategoryName = model.CategoryName;
+
+                    _auctionItemRepository.Update(auctionItem);
+                    return RedirectToAction("AuctionItemUpdated");
+                }
+                return View(model);
+            }
+
         }
         public IActionResult AuctionItemUpdated()
         {

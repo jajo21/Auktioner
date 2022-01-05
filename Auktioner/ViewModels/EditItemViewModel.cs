@@ -35,9 +35,21 @@ namespace Auktioner.ViewModels
         [GreaterThan("Costs", ErrorMessage = "Utgångspriset måste vara högre än kostnaderna")]
         public double StartingPrice { get; set; }
 
+        [Required(ErrorMessage = "Var god ange ett slutpris")]
+        [DataType(DataType.Currency)]
+        [Display(Name = "Slutpris")]
+        [Range(0, double.MaxValue, ErrorMessage = "Slutpriset måste vara ett positivt nummer")]
+        //[GreaterThanOrEqualTo("StartingPrice", ErrorMessage = "Slutpriset måste vara högre eller likamed utgångspriset")]
+        public double FinalPrice {get; set;}
+
+        [Required(ErrorMessage = "Kryssa i om den är såld eller ej")]
+        [Display(Name = "Finns objektet kvar")]
+        public bool InStock {get; set;}
+
         [Required(ErrorMessage = "Välj kategori")]
         [Display(Name = "Välj kategori")]
         public string CategoryName { get; set; }
         public IEnumerable<Category> Categories { get; set; }
+        public AppUser modelUser {get; set;}
     }
 }
