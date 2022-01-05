@@ -27,6 +27,19 @@ namespace Auktioner.Models
         {
             return _appDbContext.AuctionItems.Where(a => a.InStock == false);
         }
+        public IEnumerable<AuctionItem> AuctionItemsInStock(string username)
+        {
+            return _appDbContext.AuctionItems
+                .Where(i => i.Purchaser == username)
+                .Where(i => i.InStock == false);
+        }
+
+        public IEnumerable<AuctionItem> SoldAuctionItems(string username)
+        {
+            return _appDbContext.AuctionItems
+                .Where(i => i.Purchaser == username)
+                .Where(i => i.InStock == true);
+        }
 
         public AuctionItem GetAuctionItemById(string id)
         {
@@ -51,15 +64,17 @@ namespace Auktioner.Models
             }
         }
 
-        public void SetInStock(AuctionItem item)
+        public void SetInOrOuStock(AuctionItem item)
         {
             if(item.InStock)
             {
                 _appDbContext.AuctionItems.FirstOrDefault(auctionItem => auctionItem.Name == item.Name).InStock = false;
+                _appDbContext.SaveChanges();
             }
             else
             {
                 _appDbContext.AuctionItems.FirstOrDefault(auctionItem => auctionItem.Name == item.Name).InStock = true;
+                _appDbContext.SaveChanges();
             }
         }
     }

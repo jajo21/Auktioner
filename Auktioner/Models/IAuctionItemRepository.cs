@@ -5,11 +5,12 @@ namespace Auktioner.Models
     public interface IAuctionItemRepository
     {
         IEnumerable<AuctionItem> AllAuctionItems { get; }
-        public IEnumerable<AuctionItem> AuctionItemsInStock();
-        public IEnumerable<AuctionItem> SoldAuctionItems();
-        public void AddToInventory(AuctionItem item);
-        public AuctionItem GetAuctionItemById(string id);
-        public void Update(AuctionItem item);
-        
+        IEnumerable<AuctionItem> AuctionItemsInStock();
+        IEnumerable<AuctionItem> AuctionItemsInStock(string username);
+        IEnumerable<AuctionItem> SoldAuctionItems();
+        IEnumerable<AuctionItem> SoldAuctionItems(string username);
+        void AddToInventory(AuctionItem item);
+        AuctionItem GetAuctionItemById(string id);
+        void Update(AuctionItem item);
     }
 }
