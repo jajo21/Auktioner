@@ -43,13 +43,13 @@ namespace Auktioner.ViewModels
         public double FinalPrice {get; set;}
 
         [Required(ErrorMessage = "Kryssa i om den är såld eller ej")]
-        [Display(Name = "Finns objektet kvar")]
+        [Display(Name = "Finns kvar i lager")]
         public bool InStock {get; set;}
 
         [Required(ErrorMessage = "Välj kategori")]
         [Display(Name = "Välj kategori")]
         public string CategoryName { get; set; }
         public IEnumerable<Category> Categories { get; set; }
-        public AppUser modelUser {get; set;}
+        public AppUser ModelUser {get; set;}
     }
 }
