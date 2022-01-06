@@ -7,6 +7,5 @@ namespace Auktioner.Models
         IEnumerable<Category> AllCategories { get; }
         Category GetCategoryByName(string categoryName);
         void AddCategory(Category category);
-        void RemoveCategory(Category category);
     }
 }

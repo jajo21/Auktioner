@@ -51,17 +51,5 @@ namespace Auktioner.Controllers
             ViewBag.CategoryAddedMessage = "Tack. Du har nu lagt till en kategori!";
             return View();
         }
-
-        //[HttpPost]
-        //public IActionResult DeleteCategory(int categoryId)
-        //{
-        //    var cat = _categoryRepository.AllCategories.FirstOrDefault(c => c.CategoryId == categoryId);
-        //    if (ModelState.IsValid)
-        //    {
-        //        _categoryRepository.RemoveCategory(cat);
-        //        return RedirectToAction("CategoryAdded");
-        //    }
-        //    return View(categoryId);
-        //}
     }
 }
