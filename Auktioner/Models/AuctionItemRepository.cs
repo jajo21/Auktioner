@@ -63,19 +63,5 @@ namespace Auktioner.Models
                 _appDbContext.SaveChanges();
             }
         }
-
-        public void SetInOrOuStock(AuctionItem item)
-        {
-            if(item.InStock)
-            {
-                _appDbContext.AuctionItems.FirstOrDefault(auctionItem => auctionItem.Name == item.Name).InStock = false;
-                _appDbContext.SaveChanges();
-            }
-            else
-            {
-                _appDbContext.AuctionItems.FirstOrDefault(auctionItem => auctionItem.Name == item.Name).InStock = true;
-                _appDbContext.SaveChanges();
-            }
-        }
     }
 }

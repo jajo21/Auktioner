@@ -63,7 +63,7 @@ namespace Auktioner.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
 
             [Required]
-            [Display(Name = "Auktionsansvarig?")]
+            [Display(Name = "Auktionsansvarig")]
             public bool IsAdmin { get; set; }
         }
 

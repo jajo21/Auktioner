@@ -9,8 +9,8 @@ namespace Auktioner.Tests
     public class AuktionerTests
     {
         [Fact]
-        public void GetArticlesInStock()    // Kontrollerar att det går att hämta rätt antal objekt via metoderna och kontrollera att det stämmer
-        {                                   // överens genom att se hur många objekt som finns kvar i lager.
+        public void GetArticlesInStock()    // Kontrollerar att det gï¿½r att hï¿½mta rï¿½tt antal objekt via metoderna och kontrollera att det stï¿½mmer
+        {                                   // ï¿½verens genom att se hur mï¿½nga objekt som finns kvar i lager.
             var options = new DbContextOptionsBuilder<AppDbContext>().UseInMemoryDatabase("test").Options;
             using var _appDbContext = new AppDbContext(options);
             AuctionItemRepository _auctionItemRepository = new(_appDbContext);
@@ -38,14 +38,14 @@ namespace Auktioner.Tests
                 Name = "Artikel test",
                 Description = "Artikel beskrivning",
                 Decade = 1990,
-                StartingPrice = 1000,   //Utgångspris lägre än kostnad
-                Costs = 1100,   //Kostnad högre än utgångspris
+                StartingPrice = 1000,   //Utgï¿½ngspris lï¿½gre ï¿½n kostnad
+                Costs = 1100,   //Kostnad hï¿½gre ï¿½n utgï¿½ngspris
                 Purchaser = "test@test.se",
                 CategoryName = "Vinter"
             };
             _auctionItemRepository.AddToInventory(testItem);
 
-            int expected = itemsInInventoryBeforeAdd; //Bör vara samma eftersom inget har lagts till på grund av felaktigheter
+            int expected = itemsInInventoryBeforeAdd; //Bï¿½r vara samma eftersom inget har lagts till pï¿½ grund av felaktigheter
             int actual = _appDbContext.AuctionItems.Count();
 
             Assert.Equal(expected, actual);
@@ -78,13 +78,12 @@ namespace Auktioner.Tests
             Assert.Equal(expected, actual);
         }
         [Fact]
-        public void NotBeAbleToAddInventoryWithSameIdToDatabase()
+        public void NotBeAbleToAddToInventoryWithSameIdToDatabase()
         {
-            var options = new DbContextOptionsBuilder<AppDbContext>()
-                .UseInMemoryDatabase("test").Options;
-
+            var options = new DbContextOptionsBuilder<AppDbContext>().UseInMemoryDatabase("test").Options;
             using var _appDbContext = new AppDbContext(options);
             AuctionItemRepository _auctionItemRepository = new(_appDbContext);
+
             var itemsInInventoryBeforeAdd = _appDbContext.AuctionItems.Count();
             var testItem = new AuctionItem
             {
@@ -97,13 +96,28 @@ namespace Auktioner.Tests
                 Purchaser = "test@test.se",
                 CategoryName = "Vinter"
             };
-            _auctionItemRepository.AddToInventory(testItem);
+            _auctionItemRepository.AddToInventory(testItem); // BÃ¶r ej fungera eftersom detta ID redan existerar i databasen.
 
             int actual = _appDbContext.AuctionItems.Count();
-            int expected = itemsInInventoryBeforeAdd; //Bör vara samma eftersom inget har lagts till
+            int expected = itemsInInventoryBeforeAdd; //Bï¿½r vara samma eftersom inget har lagts till
 
             Assert.Equal(expected, actual);
         }
+        [Fact]
+        public void UpdateItem() // Kollar om det gÃ¥r att redigera och updatera ett objekt i databasen genom matoden update
+        {
+            var options = new DbContextOptionsBuilder<AppDbContext>().UseInMemoryDatabase("test").Options;
+            using var _appDbContext = new AppDbContext(options);
+            AuctionItemRepository _auctionItemRepository = new(_appDbContext);
 
+            var testItem = _auctionItemRepository.GetAuctionItemById("ABC123456");
+            testItem.Name = "Sommar";
+            _auctionItemRepository.Update(testItem);
+
+            string actual = _auctionItemRepository.GetAuctionItemById("ABC123456").Name;
+            string expected = "Sommar";
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
