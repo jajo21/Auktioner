@@ -8,6 +8,9 @@
 ## Instruktioner
 
 *Vad behöver göras för att ditt program ska starta och gå och använda?*
+**Kräver .NET5.0 SDK** och att
+**Navigera till rätt mapp och skriva "dotnet run" i terminalen** samt en
+**Webbläsare**
 
 ## TODO - Kvar att göra
 
@@ -17,7 +20,7 @@
  |---|---|---|
 |**1**  |**Ja**| |
 |**2**  |**Ja**| |
-|**3**  |*nej*| |
+|**3**  |**Ja**| |
 |**4**  |**Ja**| |
 |**5**  |**Ja**| |
 |**6**  |**Ja**| |
@@ -27,7 +30,7 @@
 |**10**  |**Ja**| |
 |**11**  |**Ja**| |
 |**12**  |**Ja**| |
-|**13**  |*nej*| |
+|**13**  |**Ja**| |
 |**14**  |**Ja**| |
 |**15**  |**Ja**| |
 |**16**  |*nej*| |
@@ -37,3 +40,4 @@
 ## Förtydliganden/motivering
 
 *Finns det något extra du vill förtydliga med din lösning? Både bra och mindre bra*
+Jag är mindre nöjd med uppbyggnaden i kod. Går förmodligen att skapa den här lilla applikationen mer dry. Men tiden rann iväg och jag har spenderat för många timmar framför skärmen. Det har verkligen varit en bergochdalbana den här modulen. Men i slutändan fick jag ihop ett resultat iallafall även om jag är mindre nöjd med vissa delar. Vill lära mig så mycket mer. Det brister i kunskapen när man vill skapa något som ser smidigt och visuellt vackert ut, man får kämpa för att varje litet kodstycke ska göra som man vill. En vacker dag i framtiden kanske man är nöjd med en inlämning!
