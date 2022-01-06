@@ -29,59 +29,59 @@ namespace Auktioner.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 1, CategoryName = "Vinter" });
-            modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 2, CategoryName = "Sommar" });
-            modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 3, CategoryName = "Höst" });
+            modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 1, CategoryName = "Dekoration" });
+            modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 2, CategoryName = "Transport" });
+            modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 3, CategoryName = "Hushåll" });
 
             modelBuilder.Entity<AuctionItem>().HasData(new AuctionItem
             {
                 AuctionItemId = "ABC123456",
-                Name = "Vinterlådan",
-                Description = "Vinterlådan är en bra låda",
+                Name = "Bänk",
+                Description = "En underbar bänk från tidigt 90-tal",
                 Decade = 1990,
-                StartingPrice = 1000,
-                Costs = 700,
-                Purchaser = "vinter@gg.se",
-                CategoryName = "Vinter"
+                StartingPrice = 7000,
+                Costs = 6000,
+                Purchaser = "göran@gg.se",
+                CategoryName = "Dekoration"
 
             });
 
             modelBuilder.Entity<AuctionItem>().HasData(new AuctionItem
             {
                 AuctionItemId = "DEF789123",
-                Name = "Sommarlådan",
-                Description = "Sommarlådan är en bra låda",
+                Name = "Supersnabben",
+                Description = "En kanonbil för den motorkunnige!",
                 Decade = 1980,
-                StartingPrice = 1100,
-                FinalPrice = 1300,
-                Costs = 800,
+                StartingPrice = 20000,
+                FinalPrice = 25000,
+                Costs = 14000,
                 InStock = false,
-                Purchaser = "sommar@gg.se",
-                CategoryName = "Sommar"
+                Purchaser = "gösta@gg.se",
+                CategoryName = "Transport"
             });
 
             modelBuilder.Entity<AuctionItem>().HasData(new AuctionItem
             {
                 AuctionItemId = "BEF789123",
-                Name = "Höstlådan",
-                Description = "Höstlådan är en bra låda",
+                Name = "Servis",
+                Description = "En kanonfin servis!",
                 Decade = 1980,
-                StartingPrice = 1100,
-                Costs = 800,
-                Purchaser = "höst@gg.se",
-                CategoryName = "Höst"
+                StartingPrice = 3000,
+                Costs = 1500,
+                Purchaser = "bengt@gg.se",
+                CategoryName = "Hushåll"
             });
 
             modelBuilder.Entity<AuctionItem>().HasData(new AuctionItem
             {
                 AuctionItemId = "CEF789123",
-                Name = "Sommarlådan2",
-                Description = "Sommarlådan är en bra låda2",
+                Name = "Klocka",
+                Description = "Finfin klocka.",
                 Decade = 1980,
-                StartingPrice = 1100,
+                StartingPrice = 2000,
                 Costs = 800,
-                Purchaser = "sommar@gg.se",
-                CategoryName = "Sommar"
+                Purchaser = "bengt@gg.se",
+                CategoryName = "Dekoration"
             });
         }
     }
