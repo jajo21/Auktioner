@@ -44,7 +44,7 @@ namespace Auktioner.Models
 
         [Required(ErrorMessage = "Kryssa i om den är såld eller ej")]
         [Display(Name = "Är artikeln såld")]
-        public bool InStock { get; set; }   
+        public bool InStock { get; set; } = true;
 
         public string Purchaser { get; set; }
         [Required(ErrorMessage = "Välj kategori")]
