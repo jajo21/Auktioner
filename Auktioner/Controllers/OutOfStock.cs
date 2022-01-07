@@ -9,12 +9,12 @@ using System.Linq;
 namespace Auktioner.Controllers
 {
     [Authorize]
-    public class SoldController : Controller
+    public class OutOfStock : Controller
     {
         private readonly IAuctionItemRepository _auctionItemRepository;
         private readonly UserManager<AppUser> _userManager;
 
-        public SoldController(IAuctionItemRepository auctionItemRepository, UserManager<AppUser> userManager)
+        public OutOfStock(IAuctionItemRepository auctionItemRepository, UserManager<AppUser> userManager)
         {
             _auctionItemRepository = auctionItemRepository;
             _userManager = userManager;
@@ -23,31 +23,33 @@ namespace Auktioner.Controllers
         public IActionResult List()
         {
             var user = _userManager.Users.FirstOrDefault(u => u.Id == _userManager.GetUserId(User));
-            if(user.IsAdmin)
+            if(user.IsAuctioneer)
             {
                 return View(new InventoryListViewModel
                 {
-                    AuctionItems = _auctionItemRepository.SoldAuctionItems()
+                    AuctionItems = _auctionItemRepository.SoldAuctionItems(),
+                    ThisUser = user
                 });      
             }
             else
             {
                 if(_auctionItemRepository.AuctionItemsInStock(user.UserName).Count() == 0)
                 {
-                    return RedirectToAction("NoneSold");
+                    return RedirectToAction("NoneSoldOutOfStock");
                 }
                 else
                 {
                     return View(new InventoryListViewModel
                     {
-                        AuctionItems = _auctionItemRepository.AuctionItemsInStock(user.UserName)
+                        AuctionItems = _auctionItemRepository.AuctionItemsInStock(user.UserName),
+                        ThisUser = user
                     });
                 }
             }
         }
-        public IActionResult NoneSold()
+        public IActionResult NoneSoldOutOfStock()
         {
-            ViewBag.NoneSoldMessage = "Du har tyvärr inga sålda objekt ännu!";
+            ViewBag.NoneSoldOutOfStockMessage = "Du har tyvärr inga sålda objekt som har lämnat lagret ännu!";
             return View();
         }
     }

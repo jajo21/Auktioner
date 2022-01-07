@@ -4,11 +4,11 @@ namespace Auktioner.Models
 {
     public class AppUser : IdentityUser
     {
-        bool isAdmin;
-        public bool IsAdmin
+        bool isAuctioneer;
+        public bool IsAuctioneer
         {
-            get { return this.isAdmin; }
-            set { this.isAdmin = value; }
+            get { return this.isAuctioneer; }
+            set { this.isAuctioneer = value; }
         }
     }
 }
