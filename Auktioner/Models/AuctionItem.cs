@@ -5,103 +5,50 @@ namespace Auktioner.Models
 {
     public class AuctionItem
     {
-        
-        string auctionItemId; //3 bokstäver och 6 siffror
-        string name;
-        string description;
-        int decade;
-        double startingPrice; // får aldrig vara lägre än costs
-        double finalPrice;
-        double costs;
-        string purchaser; 
-        bool inStock = true;
-        string categoryName;
-        
         [Required(ErrorMessage = "Var god ange ett korrekt ID med 3 versaler och 6 siffror - exempel: ABC123456")]
         [Display(Name = "Artikel ID")]
         [RegularExpression(@"^[A-Z]{3}\d{6}$", ErrorMessage = "Var god ange ett korrekt ID med 3 versaler och 6 siffror - exempel: ABC123456")]
         [Key]
-        public string AuctionItemId
-        {
-            get { return this.auctionItemId; }
-            set { this.auctionItemId = value; }
-        }
+        public string AuctionItemId { get; set; }
 
         [Required(ErrorMessage = "Var god ange ett namn på artikeln")]
         [Display(Name = "Namn")]
-        public string Name
-        {
-            get { return this.name; }
-            set { this.name = value; }
-        }
+        public string Name { get; set; }
 
         [Required(ErrorMessage = "Var god ange en beskrivning av artikeln")]
         [Display(Name = "Beskrivning")]
-        public string Description
-        {
-            get { return this.description; }
-            set { this.description = value; }
-        }
+        public string Description { get; set; }
 
         [Required(ErrorMessage = "Var god ange ett korrekt årtionde - exempel: 1990")]
         [Display(Name = "Skapad årtionde")]
         [RegularExpression(@"^\d{1,3}0{1}$", ErrorMessage = "Var god ange ett korrekt årtionde enligt formaten YYYY/YYY/YY och avsluta med siffran 0")]
-        public int Decade
-        {
-            get { return this.decade; }
-            set { this.decade = value; }    
-        }
+        public int Decade { get; set; }
 
         [Required(ErrorMessage = "Var god ange ett utgångspris")]
         [DataType(DataType.Currency)]
         [Display(Name = "Utgångspris")]
         [Range(0, double.MaxValue, ErrorMessage = "Utgångspriset måste vara högre än kostnaderna")]
-        public double StartingPrice
-        {
-            get { return this.startingPrice; }
-            set {  this.startingPrice = value; }
-        }
+        public double StartingPrice { get; set; }
 
         [Required(ErrorMessage = "Var god ange ett slutpris")]
         [DataType(DataType.Currency)]
         [Display(Name = "Slutpris")]
         [Range(0, double.MaxValue, ErrorMessage = "Slutpriset måste vara ett positivt nummer")]
-        public double FinalPrice
-        {
-            get { return this.finalPrice; }
-            set { this.finalPrice = value; }
-        }
+        public double FinalPrice { get; set; }
 
         [Required(ErrorMessage = "Var god ange totala kostnader för artikeln")]
         [DataType(DataType.Currency)]
         [Display(Name = "Total kostnad")]
         [Range(0, double.MaxValue, ErrorMessage = "Kostnaden måste vara ett positivt nummer")]
-        public double Costs
-        {
-            get { return this.costs; }
-            set { this.costs = value; }
-        }
+        public double Costs { get; set; }
 
         [Required(ErrorMessage = "Kryssa i om den är såld eller ej")]
         [Display(Name = "Är artikeln såld")]
-        public bool InStock
-        {
-            get { return this.inStock; }
-            set { this.inStock = value; }
-        }        
+        public bool InStock { get; set; }   
 
-        public string Purchaser
-        {
-            get { return this.purchaser; }
-            set { this.purchaser = value;}
-        }
-
+        public string Purchaser { get; set; }
         [Required(ErrorMessage = "Välj kategori")]
         [Display(Name = "Välj kategori")]
-        public string CategoryName
-        {
-            get { return this.categoryName; }
-            set { this.categoryName = value; }
-        }
+        public string CategoryName { get; set; }
     }
 }

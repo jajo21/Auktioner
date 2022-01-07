@@ -12,7 +12,6 @@ namespace Auktioner.ViewModels
         [Display(Name = "Slutpris")]
         [Range(0, double.MaxValue, ErrorMessage = "Slutpriset måste vara ett positivt nummer")]
         [GreaterThanOrEqualTo("StartingPrice", ErrorMessage = "Slutpriset måste vara högre eller likamed utgångspriset")]
-        
         public double FinalPrice { get; set; }
 
         [Required(ErrorMessage = "Kryssa i om den är såld eller ej")]
