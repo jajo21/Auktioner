@@ -64,7 +64,7 @@ namespace Auktioner.Areas.Identity.Pages.Account
 
             [Required]
             [Display(Name = "Auktionsansvarig")]
-            public bool IsAdmin { get; set; }
+            public bool IsAuctioneer { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -79,7 +79,7 @@ namespace Auktioner.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new AppUser { UserName = Input.Email, Email = Input.Email, IsAuctioneer = Input.IsAdmin };
+                var user = new AppUser { UserName = Input.Email, Email = Input.Email, IsAuctioneer = Input.IsAuctioneer };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
