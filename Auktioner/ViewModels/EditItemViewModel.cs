@@ -8,7 +8,7 @@ namespace Auktioner.ViewModels
     public class EditItemViewModel
     {
         [Required(ErrorMessage = "Var god ange ett korrekt ID med 3 versaler och 6 siffror - exempel: ABC123456")]
-        [Display(Name = "Artikel ID")]
+        [Display(Name = "Objekt ID")]
         [RegularExpression(@"^[A-Z]{3}\d{6}$", ErrorMessage = "Var god ange ett korrekt ID med 3 versaler och 6 siffror - exempel: ABC123456")]
         [Key]
         public string AuctionItemId { get; set; }
@@ -18,7 +18,7 @@ namespace Auktioner.ViewModels
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Var god ange en beskrivning av artikeln")]
-        [Display(Name = "Objektbeskrivning")]
+        [Display(Name = "Objektsbeskrivning")]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Var god ange totala kostnader för artikeln")]
