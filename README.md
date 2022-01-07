@@ -33,11 +33,14 @@
 |**13**  |**Ja**| |
 |**14**  |**Ja**| |
 |**15**  |**Ja**| |
-|**16**  |*nej*| |
-|**17**  |*nej*| |
-|**18**  |*nej*| |
+|**16**  |**Ja**| |
+|**17**  |**Ja**| |
+|**18**  |**Ja**| |
+|**19**  |**Ja**| |
 
 ## Förtydliganden/motivering
 
 *Finns det något extra du vill förtydliga med din lösning? Både bra och mindre bra*
-Jag är mindre nöjd med uppbyggnaden i kod. Går förmodligen att skapa den här lilla applikationen mer dry. Men tiden rann iväg och jag har spenderat för många timmar framför skärmen. Det har verkligen varit en bergochdalbana den här modulen. Men i slutändan fick jag ihop ett resultat iallafall även om jag är mindre nöjd med vissa delar. Vill lära mig så mycket mer. Det brister i kunskapen när man vill skapa något som ser smidigt och visuellt vackert ut, man får kämpa för att varje litet kodstycke ska göra som man vill. En vacker dag i framtiden kanske man är nöjd med en inlämning!
+Jag är mindre nöjd med uppbyggnaden av min kod. Går förmodligen att skapa den här lilla applikationen mer dry. Men tiden rann iväg och jag har spenderat för många timmar framför skärmen. Det har verkligen varit en bergochdalbana den här modulen. Men i slutändan fick jag ihop ett resultat iallafall även om jag är mindre nöjd med vissa delar. Vill lära mig så mycket mer. Det brister i kunskapen när man vill skapa något som ser smidigt och visuellt vackert ut, man får kämpa för att varje litet kodstycke ska göra som man vill. 
+
+Mindre bra är att jag inte har löst helheten med roller. Så att man hade kunnat koppla på exempelvis "Authorize("Auctioneer")" på relevanta controllers för att begränsa användarna på ett annat sätt än vad jag har gjort i min app.
