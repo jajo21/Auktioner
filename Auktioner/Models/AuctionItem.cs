@@ -20,7 +20,7 @@ namespace Auktioner.Models
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Var god ange ett korrekt årtionde - exempel: 1990")]
-        [Display(Name = "Skapad årtionde")]
+        [Display(Name = "Tillverkad årtionde")]
         [RegularExpression(@"^\d{1,3}0{1}$", ErrorMessage = "Var god ange ett korrekt årtionde enligt formaten YYYY/YYY/YY och avsluta med siffran 0")]
         public int Decade { get; set; }
 
