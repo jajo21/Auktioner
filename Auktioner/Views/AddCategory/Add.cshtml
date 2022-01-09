@@ -1,5 +1,9 @@
 ﻿@model AddCategoryViewModel
 
+@{
+    ViewData["Title"] = "Lägg till kategori";
+}
+
 <h4>Det här är de nuvarande kategorierna som finns tillgängliga:</h4>
 <div class="col-md-2">
     @foreach(var category in Model.Categories)
@@ -26,7 +30,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-5">
-            <input type="submit" class="btn btn-primary" value="Spara" />
+            <input type="submit" class="btn btn-primary" value="Spara" /> <a asp-controller="AddItem" asp-action="Add" class="btn btn-primary">Avbryt</a>
         </div>
     </div>
 </form>

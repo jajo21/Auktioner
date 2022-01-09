@@ -31,9 +31,9 @@ namespace Auktioner.Controllers
         public IActionResult Add(AddItemViewModel model)
         {
             var auctionItemExists = _auctionItemRepository.AllAuctionItems.FirstOrDefault(i => i.AuctionItemId == model.AuctionItemId);
+            model.Categories = _categoryRepository.AllCategories;
             if(auctionItemExists != null)
-            {
-                model.Categories = _categoryRepository.AllCategories;
+            { 
                 ViewBag.IDExists = "ID upptaget, testa ett annat";
                 return View(model);
             }
@@ -54,7 +54,6 @@ namespace Auktioner.Controllers
                 _auctionItemRepository.AddToInventory(auctionItem);
                 return RedirectToAction("AuctionItemAdded");
             }
-            model.Categories = _categoryRepository.AllCategories;
             return View(model);
         }
 

@@ -1,4 +1,7 @@
 ﻿@model AddItemViewModel
+@{
+    ViewData["Title"] = "Lägg till objekt";
+}
 
 <form asp-action="Add" method="post" class="form-horizontal" role="form">
     <h4>Skriv in uppgiferna till objektet du vill lägga till.</h4>
@@ -63,7 +66,7 @@
             {
                 <option class="form-control">@category.CategoryName</option>
             }
-        </select>
+        </select>    
     </div>
 
     <div class="form-group">
