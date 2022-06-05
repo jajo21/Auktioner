@@ -1,42 +1,27 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=6628876&assignment_repo_type=AssignmentRepo)
-# Auktioner.NET
 
->En webbapplikation för besökare hos en auktionsfirma
->
->[Gå till uppgiften](https://ju.instructure.com/courses/5943/assignments/24067)
-
+# Auktioner.NET - Januari 2022
 ## Instruktioner
+1. Ladda ner repot från https://github.com/jajo21/Auktioner
+2. Leta upp valfri terminal och utgå från mappen "./Uppfinnaren"
+3. Applikationen kräver att du har .NET5.0 SDK installerat
+4. Skriv kommandot ```dotnet run``` i terminalen
+5. Applikationen körs nu på port 5000 och 5001
+6. Öppna en webbläsare och navigera in på https://localhost:5001/
 
-*Vad behöver göras för att ditt program ska starta och gå och använda?*
-**Kräver .NET5.0 SDK** och att
-**Navigera till rätt mapp och skriva "dotnet run" i terminalen** samt en
-**Webbläsare**
+## Syfte - YH-utbildning: Webbutvecklare .NET
+* Inlämningsuppgift i kursen Dynamiska Webbsystem 1 - Januari 2022
+* Beskrivning: Ett första större mer realistiskt projekt där vi ska sätta upp ett digitalt arbetsverktyg för ett företag som håller på med auktioner. Mer information finns i PDF:en under kravspecifikation
+* Resultat: 100/100 (VG)
 
-## TODO - Kvar att göra
+## Tekniker
+* ASP.NET MVC
+* C#
+* Razor
 
-*Vad har du inte hunnit med i denna uppgift?*
-
- |Krav|Uppfyllt|Egna Kommentarer|
- |---|---|---|
-|**1**  |**Ja**| |
-|**2**  |**Ja**| |
-|**3**  |**Ja**| |
-|**4**  |**Ja**| |
-|**5**  |**Ja**| |
-|**6**  |**Ja**| |
-|**7**  |**Ja**| |
-|**8**  |**Ja**| |
-|**9**  |**Ja**| |
-|**10**  |**Ja**| |
-|**11**  |**Ja**| |
-|**12**  |**Ja**| |
-|**13**  |**Ja**| |
-|**14**  |**Ja**| |
-|**15**  |**Ja**| |
-|**16**  |**Ja**| |
-|**17**  |**Ja**| |
-|**18**  |**Ja**| |
-|**19**  |**Ja**| |
+## Kravspecifikation
+Det är en någorlunda längre kravspecifikation och scenario. För mer information klicka här:
+[Inlämning_ Auktioner.NET, 6Yhp.pdf](https://github.com/jajo21/Auktioner/files/8840064/Inlamning_.Auktioner.NET.6Yhp.pdf)
+Jag anser att jag har uppfyllt dessa krav.
 
 ## Förtydliganden/motivering
 
