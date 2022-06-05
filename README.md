@@ -14,13 +14,16 @@
 * Resultat: 100/100 (VG)
 
 ## Tekniker
-* ASP.NET MVC
+* ASP.NET Core MVC
+* ASP.Net Core Identity
+* Entity Framework Core
+* In Memory Database
 * C#
 * Razor
 
 ## Kravspecifikation
-Det är en någorlunda längre kravspecifikation och scenario. För mer information klicka här:
-[Inlämning_ Auktioner.NET, 6Yhp.pdf](https://github.com/jajo21/Auktioner/files/8840064/Inlamning_.Auktioner.NET.6Yhp.pdf)
+Det är en någorlunda längre kravspecifikation än mina tidigare uppgifter tillsammans med ett mer realistiskt scenario. För mer information klicka på PDF:en nedanför här:  
+[Inlämning Auktioner.NET.pdf](https://github.com/jajo21/Auktioner/files/8840064/Inlamning_.Auktioner.NET.6Yhp.pdf)  
 Jag anser att jag har uppfyllt dessa krav.
 
 ## Förtydliganden/motivering
