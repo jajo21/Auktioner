@@ -14,11 +14,12 @@
 * Resultat: 100/100 (VG)
 
 ## Tekniker
+* C#
 * ASP.NET Core MVC
 * ASP.Net Core Identity
 * Entity Framework Core
 * In Memory Database
-* C#
+* xUnit
 * Razor
 
 ## Kravspecifikation
