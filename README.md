@@ -2,7 +2,7 @@
 # Auktioner.NET - Januari 2022
 ## Instruktioner
 1. Ladda ner repot från https://github.com/jajo21/Auktioner
-2. Leta upp valfri terminal och utgå från mappen "./Uppfinnaren"
+2. Leta upp valfri terminal och utgå från mappen "./Auktioner"
 3. Applikationen kräver att du har .NET5.0 SDK installerat
 4. Skriv kommandot ```dotnet run``` i terminalen
 5. Applikationen körs nu på port 5000 och 5001
