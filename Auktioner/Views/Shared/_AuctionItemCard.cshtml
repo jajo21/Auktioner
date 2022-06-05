@@ -1,0 +1,19 @@
+﻿@model AuctionItem
+<div>
+    <h3>@Model.Name</h3>
+    <p>ID: @Model.AuctionItemId</p>
+    <p>Objektsbeskrivning: @Model.Description</p>
+    <p>Objektskostnad: @Model.Costs.ToString("c")</p>
+    <p>Utgångspris: @Model.StartingPrice.ToString("c")</p>
+    <p>Slutpris: @Model.FinalPrice.ToString("c")</p>
+    <p>Tillverkad årtionde: @Model.Decade</p> 
+    <p>Inköpare: @Model.Purchaser</p>
+    <p>Kategori: @Model.CategoryName</p>
+    @if(Model.InStock)
+    {
+      <p>I lager: Ja</p>  
+    } else
+    {
+      <p>I lager: Nej</p> 
+    } 
+</div>

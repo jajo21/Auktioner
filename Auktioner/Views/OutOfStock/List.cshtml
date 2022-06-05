@@ -1,0 +1,19 @@
+@model InventoryListViewModel
+
+@{
+    ViewData["Title"] = "Lämnat lagret";
+}
+@foreach (var auctionItem in Model.AuctionItems)
+{
+    <div class="form-group">
+        
+        <div class="col-md-offset-2 col-md-5">
+            <partial name="_AuctionItemCard" model="auctionItem" />
+            @if(@Model.ThisUser.IsAuctioneer)
+            {   
+                <a asp-area="" asp-controller="Inventory" asp-action="Edit" asp-route-itemId="@auctionItem.AuctionItemId" class="btn btn-primary">Redigera</a>
+                <a asp-area="" asp-controller="Inventory" asp-action="AuctioneerEdit" asp-route-itemId="@auctionItem.AuctionItemId" class="btn btn-primary">Lagerstatus & Slutpris</a>
+            }
+        </div>
+    </div>
+}
