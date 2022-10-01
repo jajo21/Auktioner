@@ -22,7 +22,7 @@
 * Razor
 
 ## Kravspecifikation
-Det är en någorlunda längre kravspecifikation än mina tidigare uppgifter tillsammans med ett mer realistiskt scenario. För mer information klicka på PDF:en här: [Inlämning Auktioner.NET.pdf](https://github.com/jajo21/Auktioner/files/8840064/Inlamning_.Auktioner.NET.6Yhp.pdf) - Jag anser att jag har uppfyllt dessa krav.
+Det är en någorlunda längre kravspecifikation än mina tidigare uppgifter tillsammans med ett mer realistiskt scenario. För mer information klicka på PDF:en här: [Inlämning Auktioner.NET, 6Yhp.pdf](https://github.com/jajo21/Auktioner/files/9689959/Inlamning_.Auktioner.NET.6Yhp.pdf) - Jag anser att jag har uppfyllt dessa krav.
 
 ## Förtydliganden/motivering
 
